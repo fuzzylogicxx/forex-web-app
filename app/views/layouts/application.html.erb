@@ -1,15 +1,67 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html dir="ltr" lang="en-GB">
   <head>
-    <title>Forex</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foreign Exchange Tool</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:700&display=swap" rel="stylesheet">
+
+    <!-- Global styles -->
+    <link rel="stylesheet" href="/assets/css/main.min.css">
+
+    <!-- FAO search engine bots: do not crawl this challenge. -->
+    <meta name="robots" content="noindex, nofollow">
+      
+    <meta name="author" content="Laurence Hughes">
+    <meta name="description" content="A challenge for FreeAgent completed by Laurence Hughes.">
+    <meta name="keywords" content="challenge, FreeAgent" />    
+
+    <!-- Favicons / icons covering all OS / device requirements -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="apple-mobile-web-app-title" content="FreeAgent Challenge">
+    <meta name="application-name" content="FreeAgent Challenge">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Security -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+</head>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<body>
 
-  <body>
+  <header id="global-header" class="global-header">
+    <div class="container">
+      <a href="/" class="logo">FreeAgent Challenge</a>
+    </div>
+  </header>
+
+  <main id="primary-content" class="primary-content">
+    
     <%= yield %>
-  </body>
+  
+  </main>
+
+  <footer aria-label="site" id="global-footer" class="global-footer">
+    <div class="footer-content container">
+      <p>2019 <a href="mailto:laurencehughes1976@gmail.com">Laurence Hughes</a></p>
+      <a href="https://github.com/fuzzylogicxx/forex-web-app.git">View on Github</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+
+  <!-- Polyfills first, to patch support in older browsers for the modern features (fetch, promises, trim, etc) we’ll use. -->
+  <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default%2Cfetch"></script>
+
+  <!-- website’s global javascript file -->
+  <script src="/assets/js/main.min.js"></script>
+
+</body>
 </html>
