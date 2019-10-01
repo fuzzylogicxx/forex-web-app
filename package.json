@@ -1,5 +1,52 @@
 {
-  "name": "forex",
-  "private": true,
-  "dependencies": {}
+	"name": "forex",
+	"version": "0.0.1",
+	"description": "An interactive web interface for comparing Foreign Exchange rates",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fuzzylogicxx/forex-web-app.git"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Laurence Hughes",
+		"url": "https://fuzzylogic.me"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/fuzzylogicxx/forex-web-app/issues"
+	},
+	"homepage": "https://github.com/fuzzylogicxx/forex-web-app#readme",
+	"browserslist": [
+		"last 2 versions",
+		"> 0.25%"
+	],
+	"scripts": {
+		"build:dev": "gulp",
+		"build:prod": "gulp",
+		"heroku-postbuild": "npm run build:prod"
+	},
+	"engines": {
+		"node": "12.10.0"
+	},
+	"dependencies": {
+		"autoprefixer": "9.6.1",
+		"browser-sync": "2.26.7",
+		"cssnano": "4.1.10",
+		"del": "3.0.0",
+		"gulp": "4.0.2",
+		"gulp-cli": "^2.2.0",
+		"gulp-concat": "2.6.1",
+		"gulp-flatmap": "1.0.2",
+		"gulp-header": "2.0.5",
+		"gulp-jshint": "2.1.0",
+		"gulp-postcss": "8.0.0",
+		"gulp-rename": "1.4.0",
+		"gulp-sass": "4.0.2",
+		"gulp-svgmin": "2.1.0",
+		"gulp-terser": "1.1.7",
+		"jshint": "2.9.6",
+		"jshint-stylish": "2.2.1",
+		"lazypipe": "1.0.1"
+	},
+	"devDependencies": {}
 }

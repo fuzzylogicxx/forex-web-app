@@ -1,0 +1,35 @@
+:root {
+  // Colours
+  --accent: firebrick;
+  --dark: #000;
+  --gray: #C0C0C0;
+  --darkgray: #222;
+  --medgray: #999;
+  --lightgray: #e0e0e0;
+  --white: #fff;
+  --border-thin: 2px;
+  
+  // Modular Scale Typography
+  --ratio: 1.4;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));--s3:calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));--s5:calc(var(--s4) * var(--ratio));
+  --measure: 65ch;
+  --font-stack-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-stack-serif: 'Lora', serif;
+  --font-stack-heading: 'Rubik', Tahoma, Sans-Serif;
+
+  // Root Styles
+  color: var(--darkgray);
+  line-height: var(--ratio);
+  font-family: var(--font-stack-sans);
+  font-size: 1rem;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
