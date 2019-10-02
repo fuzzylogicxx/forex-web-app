@@ -56,7 +56,8 @@
       });
     
     Promise.all([
-        stubPromise
+        //stubPromise
+        getRatesForDay(precedingDays[0])
         // getRatesForDay(precedingDays[0]), 
         // getRatesForDay(precedingDays[1]), 
         // getRatesForDay(precedingDays[2]), 
@@ -70,11 +71,9 @@
             });
         });
 
-        // Add (in first position) today’s rates, which we didn’t need to fetch() because the JSON was already available (var ratesToday).
-        dailyRates.unshift({'date': '' + today + '', 'rates': ratesToday});
-        console.log(dailyRates);
-
-
+        // Add (to start of array) today’s rates, which were already provided server-side.
+        dailyRates.unshift({'date': `${today}`, 'rates': ratesToday});
+        //console.log(dailyRates);
     })
     .catch(error => { 
       console.error(error.message)
@@ -98,7 +97,7 @@
     const selectCurrencyForComparison = (currencyRow) => {
         const currency = currencyRow.getAttribute('data-currency');
         
-        // if it’s already selected, there’s nothing to do. Stop here.
+        // if the currency is already selected, quit here.
         if (selectedCurrencies.indexOf(currency) !== -1) return;
 
         // add class to table row to appear selected
@@ -107,16 +106,9 @@
         // update our array of selectedCurrencies
         selectedCurrencies.push(currency);
 
-        // if two currencies have been selected, 
-        // set/update the comparison table map variable.
         if (selectedCurrencies.length === 2) {
-            
-            //comparisonTableMap
-
-
+            launchComparisonTool();
         }
-
-        console.log(selectedCurrencies);
     };
 
     
@@ -125,6 +117,23 @@
         selectedRows.forEach((selectedRow) => selectedRow.classList.remove('currency-selected'));
         
         selectedCurrencies = [];
+    };
+
+    
+    const launchComparisonTool = () => {
+        
+        setTimeout(() => {
+            modal.classList.toggle("closed");
+            modalOverlay.classList.toggle("closed");
+        }, 500);
+
+        const tableHeader = `<h2>EUR: ${baseValue}</h2><h3>${selectedCurrencies[0]} and ${selectedCurrencies[1]}: last 5 days</h3>`;
+        const tHeadMarkup = `<tr><td>Date</td><td>${selectedCurrencies[0]}</td><td>${selectedCurrencies[1]}</td></tr>`;
+        const tBodyMarkup = dailyRates.map((row) => {
+            return `<tr><td>${row.date}</td><td>${row.rates[selectedCurrencies[0]]}</td><td>${row.rates[selectedCurrencies[1]]}</td></tr>`;
+        }).join('');
+        const tableHTML = tableHeader + '<table><thead>' + tHeadMarkup + '</thead><tbody>' + tBodyMarkup + '</tbody></table>';
+        modalBody.innerHTML = tableHTML;
     };
 
 
@@ -154,34 +163,7 @@
         if (event.target.matches('td')) {
             const currencyRow = event.target.parentNode;
             selectCurrencyForComparison(currencyRow);
-        
-            // if two currencies have been selected, 
-            // render a 5-day comparison for the currencies
-
-            
-
-            const tableHeader = `<h2>EUR: ${baseValue}</h2><h3>${selectedCurrencies[0]} against ${selectedCurrencies[1]}: last 5 days</h3>`;
-
-
-
-            if (selectedCurrencies.length === 2) {
-                
-                setTimeout(() => {
-                    modal.classList.toggle("closed");
-                    modalOverlay.classList.toggle("closed");
-
-                    const theadMarkup = `<tr><td>Date</td><td>${selectedCurrencies[0]}</td><td>${selectedCurrencies[1]}</td></tr>`;
-
-                    // create a table row for each day
-                    tbodyMarkup = ['<tr></tr>', '<tr></tr>'];
-                
-                    const tableHTML = tableHeader + '<table><thead>' + theadMarkup + '</thead><tbody>' + tbodyMarkup.join('') + '</tbody></table>';
-                    modalBody.innerHTML = tableHTML;
-                }, 500);
-
-
-                return;
-            }
+            return;
         }
 
         // 'Close modal' clicks
@@ -197,7 +179,6 @@
     // Listen for events
     
     document.addEventListener('submit', submitHandler, false);
-    document.addEventListener('click', clickHandler, false)
-      
+    document.addEventListener('click', clickHandler, false);
 
 })();
