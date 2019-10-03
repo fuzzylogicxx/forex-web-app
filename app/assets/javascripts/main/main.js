@@ -1,8 +1,6 @@
 ;(function () {
 
-    //
-    // Variables
-    //
+    // Settings
 
     const fixerUrl = 'http://data.fixer.io/api/';
     const fixerAccessKey = '429ca83b5757bee8cbf4b997f620f3ab';
@@ -18,8 +16,8 @@
 
     const amountInput = document.querySelector('#amount');
     const validate = new Bouncer('#form-rates-base', { 
-        disableSubmit: true, 
-        messages: { missingValue: { default: 'Please enter a number.' } }
+        messages: { missingValue: { default: 'Please enter a number.' } }, 
+        disableSubmit: true
     });
 
     const latestRatesContainer = document.querySelector('#latest-rates-table-container');
@@ -29,9 +27,7 @@
     const modalBody = document.querySelector('#modal-body');
 
 
-    //
     // Functions
-    //
 
     // Format a calculated rate to two decimal places
     const formatRate = (value) => value.toFixed(2);
@@ -87,7 +83,7 @@
     };
 
     
-    // Launch a 2-currency, 5-day Rate Comparison Tool.
+    // Launch a 2-currency, 5-day 'Rate Comparison Tool'.
     const launchComparisonTool = () => {
         setTimeout(() => {
             modal.classList.toggle("closed");
@@ -108,7 +104,6 @@
     const clearSelectedCurrencies = () => {
         let selectedRows = document.querySelectorAll('.currency-selected');
         selectedRows.forEach((selectedRow) => selectedRow.classList.remove('currency-selected'));
-        
         selectedCurrencies = [];
     };
     

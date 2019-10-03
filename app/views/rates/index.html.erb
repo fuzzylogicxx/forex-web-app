@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= form_with model: @rate, method: :get, local: true, class: "form-custom", id: "form-rates-base" do |f| %>
+  <%= form_with model: @rate, method: :get, local: true, class: "form-custom form-rates-base", id: "form-rates-base" do |f| %>
     <div class="form-group">
       <%= label_tag(:amount, "Enter a base value") %>
       <%= number_field_tag :amount, (params[:amount] or 100), required: true %>
@@ -11,7 +11,7 @@
   <% if @rates %>
   
   <h2>Latest Rates</h2>
-  <p>Select any two currency rows to launch our 5-day comparison tool.</p>
+  <p class="note">Select any two currency rows to launch our 5-day comparison tool.</p>
 
   <div class="table-container" id="latest-rates-table-container">
   <table id="latest-rates-table">
