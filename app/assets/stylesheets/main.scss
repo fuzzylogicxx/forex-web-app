@@ -83,6 +83,9 @@ h1 {
 .global-footer a {
   color: var(--white);
   text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .footer-content {
@@ -135,4 +138,13 @@ h1 {
 
 .form-rates-base [type="submit"] {
   margin-left: var(--s-1);
+}
+
+// Latest Rates table
+
+.latest-rates-table {
+  tr:hover, 
+  .currency-selected {
+    background-color: var(--lightgray);
+  }
 }

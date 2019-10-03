@@ -74,6 +74,9 @@
     textarea,
     select {
       border: 1px solid var(--medgray);
+      &.error {
+        border-color: var(--error);
+      }
     }
 
     input[type=text],
@@ -121,9 +124,12 @@
         color: darken(#fff, 10%);
     }
 
+}
 
-  
+// Errors
 
-
+.error-message {
+    color: var(--error) !important;
+    margin-left: var(--s-1);
 }
   

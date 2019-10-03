@@ -2,7 +2,7 @@
 
     // Settings
 
-    const fixerUrl = 'http://data.fixer.io/api/';
+    const fixerUrl = 'https://data.fixer.io/api';
     const fixerAccessKey = '429ca83b5757bee8cbf4b997f620f3ab';
     const baseCurrency = 'EUR';
     const otherCurrencies = ['USD' ,'GBP', 'JPY', 'AUD', 'CAD', 'CHF', 'CNY', 'SEK', 'NZD'];
@@ -16,6 +16,7 @@
 
     const amountInput = document.querySelector('#amount');
     const validate = new Bouncer('#form-rates-base', { 
+        messageAfterField: false, 
         messages: { missingValue: { default: 'Please enter a number.' } }, 
         disableSubmit: true
     });
@@ -59,7 +60,7 @@
         const tBodyMarkup = Object.entries(dailyRates[0].rates).map(([currencyName, rate]) => {
             return `<tr data-currency="${currencyName}"><td>${currencyName}</td><td class="num">${formatRate(rate * baseValue)}</td></tr>`;
         }).join('');
-        const newTableHTML = '<table id="latest-rates-table"><thead>' + tHeadMarkup + '</thead><tbody>' + tBodyMarkup + '</tbody></table>';
+        const newTableHTML = '<table id="latest-rates-table" class="latest-rates-table"><thead>' + tHeadMarkup + '</thead><tbody>' + tBodyMarkup + '</tbody></table>';
         latestRatesTable.remove();
         latestRatesContainer.innerHTML = newTableHTML;
     };
@@ -139,7 +140,7 @@
     
     // Set up: 
     // Only apply our JS-based enhancements if we successfully fetch data for ALL days. 
-    // We can adopt this progressive enhancement based approach because we already have a non-JS-reliant baseline.
+    // We can adopt this progressive enhancement based approach because we already have a resilient baseline.
     const setup = () => {
         // Don’t start enhancing if the server-rendered data part failed.
         if (!latestRatesTable) return;
