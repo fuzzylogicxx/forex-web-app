@@ -13,10 +13,12 @@
     const precedingDays = [1,2,3,4].map((num) => dayjs().subtract(num, 'day').format('YYYY-MM-DD'));
     const dailyRates = [];
 
-    const amountInput = document.querySelector('#amount');
     let baseValue = 100;
     let selectedCurrencies = [];
 
+    const amountInput = document.querySelector('#amount');
+    const latestRatesContainer = document.querySelector('#latest-rates-table-container');
+    const latestRatesTable = document.querySelector('#latest-rates-table');
     const modal = document.querySelector('#modal');
     const modalOverlay = document.querySelector('#modal-overlay');
     const modalBody = document.querySelector('#modal-body');
@@ -48,12 +50,9 @@
     // Accept a new Euro base value and re-render the Latest Rates table
     const updateLatestRatesTable = (newBaseValue) => {
         if (!newBaseValue || (newBaseValue.length === 0) || (newBaseValue === baseValue)) return;
+        if (!latestRatesTable) return;
 
         baseValue = newBaseValue;
-
-        const latestRatesContainer = document.querySelector('#latest-rates-table-container');
-        const latestRatesTable = document.querySelector('#latest-rates-table');
-        if (!latestRatesTable) return;
 
         const tHeadMarkup = `<tr><th>Currency</th><th>Amount</th></tr>`;
         const tBodyMarkup = Object.entries(dailyRates[0].rates).map(([currencyName, rate]) => {
@@ -91,7 +90,7 @@
     };
 
     
-    // Launch a 2-currency, 5-day rate comparison tool.
+    // Launch a 2-currency, 5-day Rate Comparison Tool.
     const launchComparisonTool = () => {
         setTimeout(() => {
             modal.classList.toggle("closed");
@@ -137,41 +136,49 @@
 
     
     // Set up: 
-    // Only attempt JS-based enhancements if we managed to fetch data for ALL days. 
-    // We can regard the JS features as enhancements because we already have a decent, non-JS-reliant baseline.
+    // Only apply our JS-based enhancements if we successfully fetch data for ALL days. 
+    // We can adopt this progressive enhancement based approach because we already have a decent, non-JS-reliant baseline.
     // Promise.all() is a good fit for our needs. It rejects overall if any individual promise is rejected. 
+    const setup = () => {
+        // Don’t start enhancing if the server-rendered data part failed.
+        if (!latestRatesTable) return;
 
-    var stubPromise = new Promise(function(resolve, reject) {
-        setTimeout(function() {
-          resolve('foo');
-        }, 100);
-      });
-    
-    Promise.all([
-        //stubPromise
-        getRatesForDay(precedingDays[0])
-        // getRatesForDay(precedingDays[0]), 
-        // getRatesForDay(precedingDays[1]), 
-        // getRatesForDay(precedingDays[2]), 
-        // getRatesForDay(precedingDays[3])
-    ])
-    .then(jsonForDays => {       
-        precedingDays.forEach((day, index) => {
-            dailyRates.push({
-                'date': '' + day + '', 
-                'rates': ratesToday // stub during development | replace with 'rates': jsonForDays[index].rates
+        var stubPromise = new Promise(function(resolve, reject) {
+            setTimeout(function() {
+              resolve('foo');
+            }, 100);
+          });
+        
+        Promise.all([
+            //stubPromise
+            getRatesForDay(precedingDays[0])
+            // getRatesForDay(precedingDays[0]), 
+            // getRatesForDay(precedingDays[1]), 
+            // getRatesForDay(precedingDays[2]), 
+            // getRatesForDay(precedingDays[3])
+        ])
+        .then(jsonForDays => {       
+            precedingDays.forEach((day, index) => {
+                dailyRates.push({
+                    'date': '' + day + '', 
+                    'rates': ratesToday // stub during development | replace with 'rates': jsonForDays[index].rates
+                });
             });
+    
+            // Add (to start of array) today’s rates, which were already provided server-side.
+            dailyRates.unshift({'date': `${today}`, 'rates': ratesToday});
+    
+            // Finally, listen for events
+            document.addEventListener('submit', submitHandler, false);
+            document.addEventListener('click', clickHandler, false);
+        })
+        .catch(error => { 
+          console.error(error.message)
         });
+    };
 
-        // Add (to start of array) today’s rates, which were already provided server-side.
-        dailyRates.unshift({'date': `${today}`, 'rates': ratesToday});
-
-        // Finally, listen for events
-        document.addEventListener('submit', submitHandler, false);
-        document.addEventListener('click', clickHandler, false);
-    })
-    .catch(error => { 
-      console.error(error.message)
-    });
+    
+    // Get started.
+    setup();
 
 })();
