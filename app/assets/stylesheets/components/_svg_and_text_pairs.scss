@@ -1,0 +1,9 @@
+.text-icon-pair {
+    display: inline-flex;
+    align-items: center;
+}
+  
+.text-icon-pair * + * {
+    margin-left: .2em;
+}
+  

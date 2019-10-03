@@ -1,0 +1,129 @@
+.form-custom {
+
+    fieldset {
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+  
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"] {
+      -webkit-appearance: button;
+    }
+    
+    input,
+    button,
+    textarea,
+    select {
+      box-sizing: border-box;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: normal;
+      margin: 0;
+      overflow: visible; /* show overflow in Edge */
+      text-transform: none; /* remove inheritance Edge, Firefox, IE */
+    }
+
+    /**
+    * Remove the Clear button added by MS browsers
+    */
+    input::-ms-clear {
+        display: none;
+        height: 0;
+        width: 0;
+    }
+
+    /**
+    * <button> Focus Normalization:
+    * remove FireFox specific inner focus styles.
+    * focus style will be reapplied later.
+    */
+    button::-moz-focus-inner,
+    [type="button"]::-moz-focus-inner,
+    [type="reset"]::-moz-focus-inner,
+    [type="submit"]::-moz-focus-inner {
+        border-style: none;
+        padding: 0;
+    }
+
+    /**
+    * Add (new) focus styles after unsetting in the previous rule.
+    */
+    button:-moz-focusring,
+    [type="button"]:-moz-focusring,
+    [type="reset"]:-moz-focusring,
+    [type="submit"]:-moz-focusring {
+        outline: 1px dotted ButtonText;
+    }
+
+    // Some common styles for consistency
+
+    label {
+        display: block;
+        font-weight: 700;
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    input[type=tel],
+    input[type=search],
+    textarea,
+    select {
+      border: 1px solid var(--medgray);
+    }
+
+    input[type=text],
+    input[type=email],
+    input[type=number],
+    input[type=tel],
+    input[type=search],
+    textarea,
+    select {
+      padding: var(--s-2);
+    }
+  
+    input[type=text],
+    input[type=email],
+    input[type=search],
+    textarea {
+      border-radius: var(--border-radius);
+      width: 100%;
+    }
+
+    // Buttons
+
+    button,
+    [type="button"],
+    [type="submit"],
+    [type="reset"]
+    {
+        background: var(--accent);
+        border: 0;
+        border-radius: var(--border-radius);
+        color: #fff;
+        display: inline-block;
+        font-weight: 700;
+        white-space: nowrap;
+        padding: .4rem .9rem .55rem .8rem;
+        transition: all 0.3s ease;
+    }
+
+    button:hover,
+    [type="button"]:hover,
+    [type="submit"]:hover,
+    [type="reset"]:hover
+    {
+        background: darken($accent, 10%);
+        color: darken(#fff, 10%);
+    }
+
+
+  
+
+
+}
+  

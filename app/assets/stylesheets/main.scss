@@ -1,55 +1,23 @@
+@import './components/variables_general.scss';
+@import './components/mixins_general.scss';
+@import './components/resets_and_improvements.scss';
+@import "./components/forms.scss";
+@import './components/tables.scss';
+@import './components/responsive_layout_utilities.scss';
+@import './components/modal.scss';
+@import './components/svg_and_text_pairs.scss';
+
+
 ///////////////////////////////////
-// Variables, mixins and resets
+// Global styles
 ///////////////////////////////////
 
-@import "./components/variables_general.scss";
-@import "./components/mixins_general.scss";
-@import "./components/resets_and_improvements.scss";
-@import "./components/modal.scss";
-
-
-///////////////////////////////////
-// Utilities
-///////////////////////////////////
-
-.container {
-  box-sizing: content-box;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--measure);
+:root {
+  color: var(--darkgray);
+  line-height: var(--ratio);
+  font-family: var(--font-stack-main);
+  font-size: 1rem;
 }
-
-.stack {
-  --flow-space: var(--s1);
-  padding: var(--flow-space) 0;
-  & * + * {
-    margin-top: var(--flow-space);
-  }
-}
-
-.error {
-	border-color: red;
-}
-
-.error-message {
-	color: red;
-	margin-bottom: 1em;
-}
-
-///////////////////////////////////
-// Responsive Type
-///////////////////////////////////
-
-@include at-least(60em) {
-  :root {
-    font-size: 106.25%;
-  }
-}
-
-
-///////////////////////////////////
-// Global
-///////////////////////////////////
 
 a {
   color: var(--accent);
@@ -76,16 +44,28 @@ a {
 
 
 ///////////////////////////////////
+// Typography
+///////////////////////////////////
+
+h2 {
+  color: var(--accent);
+  font-family: var(--font-stack-special);
+  font-size: var(--s1);
+}
+
+
+///////////////////////////////////
 // Header
 ///////////////////////////////////
 
 .global-header {
-  background: var(--dark);
+  background: var(--accent);
   padding: var(--s1);
 }
 
 h1 {
   color: var(--white);
+  font-family: var(--font-stack-special);
   font-size: calc(var(--s2) - var(--s-1));
 }
 
@@ -95,13 +75,14 @@ h1 {
 ///////////////////////////////////
 
 .global-footer {
-  background: var(--dark);
+  background-color: darken($accent, 45%);
   color: var(--white);
   padding: var(--s1);
 }
 
 .global-footer a {
   color: var(--white);
+  text-decoration: none;
 }
 
 .footer-content {
@@ -112,69 +93,46 @@ h1 {
   }
 }
 
+.github-link :last-child {
+  margin-left: .4em;
+}
+
+
 
 ///////////////////////////////////
 // Main Content
 ///////////////////////////////////
 
 .primary-content {
-  padding: 0 var(--s1) calc(var(--s1) * 2);
+  padding: var(--s1) var(--s1) calc(var(--s1) * 2);
 }
-  
-h2 {
-  color: var(--accent);
-  font-size: var(--s1);
-  margin-top: var(--s1);
+
+.note {
+  margin-top: 1rem;
+  color: #666;
+  svg {
+    display: none;
+    @include at-least(60em) {
+      display: block;
+    }
+  }
 }
-  
-#app {
-  border-bottom: var(--border-thin) solid var(--lightgray);
-  margin-top: calc(var(--s2)/4);
-}
-  
-.baseline-experience {
+
+.form-rates-base {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.form-rates-base .form-group {
+  display: flex;
   align-items: center;
-}
-
-.loader-wrap {
-  height: 80px;
-}
-
-.api-data-link {
-  color: var(--medgray);
-}
   
-// Handle tables in narrow viewports
-.table-container {
-  overflow-x: auto;
+  input {
+    width: 5rem;
+    margin-left: var(--s-2);
+  }
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+.form-rates-base [type="submit"] {
+  margin-left: var(--s-1);
 }
-
-th,
-td {
-  padding: calc(var(--s2)/2);
-  padding-left: 0;
-}
-
-// tbody tr:hover {
-//   background-color: var(--lightgray);
-// }
-
-.currency-selected {
-  background-color: var(--lightgray);
-}
-  
-// tr:nth-child(1) {
-//   border-bottom: var(--border-thin) solid var(--lightgray);
-// }
-
-// tr:nth-child(3) {
-//   border-top: var(--border-thin) solid var(--lightgray);
-//   border-bottom: var(--border-thin) solid var(--lightgray);
-// }

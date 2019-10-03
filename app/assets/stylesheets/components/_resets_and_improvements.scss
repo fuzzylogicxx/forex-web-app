@@ -1,11 +1,17 @@
-@viewport{
-  width:device-width;
+@viewport {
+  width: device-width;
+}
+
+:root {
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
 }
 
 *, :after, :before {
   box-sizing: inherit;
 }
 
+// Max-width for readability: set the default then override with specifics
 * {
   max-width: var(--measure);
 }
@@ -21,7 +27,22 @@ section {
   max-width: none;
 }
 
-body, dd, dl, dt, figcaption, figure, h1, h2, h3, h4, h5, h6, hr, html, p, pre {
+html, 
+body, 
+dd, 
+dl, 
+dt, 
+figcaption, 
+figure, 
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6, 
+hr, 
+p, 
+pre {
   margin: 0;
   padding: 0;
 }
@@ -39,26 +60,61 @@ ul[class] {
   list-style: none;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, img, main, menu, nav, section {
+article, 
+aside, 
+details, 
+figcaption, 
+figure, 
+footer, 
+header, 
+hgroup, 
+main, 
+menu, 
+nav, 
+section {
   display: block;
 }
 
 img {
-  max-width: 100%;
   border-style: none;
+  display: block;
+  max-width: 100%;
 }
 
-audio, canvas, iframe, img, svg, video {
+audio, 
+canvas, 
+iframe, 
+img, 
+svg, 
+video {
   vertical-align: middle;
 }
 
-::selection {
-  background: #f3d2cd;
-  text-shadow: none;
+[hidden] {
+  display: none;
 }
 
-[hidden] {
-  display:none;
+/* for accessibility aids only */
+.a11y-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  &.focusable:active,
+  &.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+  }
 }
 
 hr {
@@ -71,11 +127,24 @@ hr {
   border-top: 1px solid #ccc;
 }
 
-:focus:not(:focus-visible){
-  outline:0;
+:focus:not(:focus-visible) {
+  outline: 0;
 }
 
 pre {
   font-family: monospace,monospace;
-  font-size:1em;
+  font-size: 1em;
+}
+
+// Remove _all_ animations and transitions for people that prefer not to see them
+@media (prefers-reduced-motion: reduce) {
+  body {
+    scroll-behavior: auto;
+  }
+
+  * {
+    -webkit-animation: none !important;
+            animation: none !important;
+    transition: none !important;
+  }
 }

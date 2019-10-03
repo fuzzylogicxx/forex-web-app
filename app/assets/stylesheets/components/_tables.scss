@@ -1,0 +1,42 @@
+// Handle tables in narrow viewports
+
+.table-container {
+    overflow-x: auto;
+}
+  
+table {
+    border-collapse: collapse;
+    // border-top: 1px solid #999;
+    // border-left: 1px solid #999;
+    width: 100%;
+}
+
+th,
+td {
+    padding: calc(var(--s1)/2);
+    // border-right: 1px solid #999;
+    border-bottom: var(--border-thin) solid var(--lightgray);
+}
+
+td:first-of-type, th:first-of-type {
+    padding-left: var(--s1);
+}
+
+td:last-of-type, th:last-of-type {
+    padding-right: var(--s1);
+}
+
+th {
+    background-color: lighten(hsl(8, 62%, 58%), 30%);
+    border-bottom: none;
+    color: var(--accent);
+    text-align: left;
+}
+
+.num {
+    text-align: right;
+}
+
+.currency-selected {
+    background-color: var(--lightgray);
+}

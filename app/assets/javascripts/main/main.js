@@ -55,9 +55,9 @@
 
         baseValue = newBaseValue;
 
-        const tHeadMarkup = `<tr><th>Currency</th><th>Amount</th></tr>`;
+        const tHeadMarkup = `<tr><th>Currency</th><th class="num">Amount</th></tr>`;
         const tBodyMarkup = Object.entries(dailyRates[0].rates).map(([currencyName, rate]) => {
-            return `<tr data-currency="${currencyName}"><td>${currencyName}</td><td>${formatRate(rate * baseValue)}</td></tr>`;
+            return `<tr data-currency="${currencyName}"><td>${currencyName}</td><td class="num">${formatRate(rate * baseValue)}</td></tr>`;
         }).join('');
         const newTableHTML = '<table id="latest-rates-table"><thead>' + tHeadMarkup + '</thead><tbody>' + tBodyMarkup + '</tbody></table>';
         latestRatesTable.remove();
@@ -66,7 +66,7 @@
 
     
     // Mark a currency as selected for comparison
-    // and if its the second of a pair, launch the comparison tool.
+    // and if it’s the second of a pair, launch the comparison tool.
     const selectCurrencyForComparison = (currencyRow) => {
         const currency = currencyRow.getAttribute('data-currency');
         
@@ -74,9 +74,7 @@
         if (selectedCurrencies.indexOf(currency) !== -1) return;
 
         currencyRow.classList.add('currency-selected');
-
         selectedCurrencies.push(currency);
-
         if (selectedCurrencies.length === 2) {
             launchComparisonTool();
         }
@@ -90,10 +88,13 @@
             modalOverlay.classList.toggle("closed");
         }, 500);
 
-        const preTableHeader = `<h2>EUR: ${baseValue}</h2><h3>${selectedCurrencies[0]} and ${selectedCurrencies[1]}: last 5 days</h3>`;
-        const tHeadMarkup = `<tr><th>Date</th><th>${selectedCurrencies[0]}</th><th>${selectedCurrencies[1]}</th></tr>`;
+        const preTableHeader = `<h2 class="modal-heading">${baseValue} EUR <span class="label-compared-currencies">${selectedCurrencies[0]} vs ${selectedCurrencies[1]}</span></h2>`;
+        const tHeadMarkup = `<tr><th>Date</th><th class="num">${selectedCurrencies[0]}</th><th class="num">${selectedCurrencies[1]}</th></tr>`;
         const tBodyMarkup = dailyRates.map((row) => {
-            return `<tr><td>${row.date}</td><td>${formatRate(row.rates[selectedCurrencies[0]])}</td><td>${formatRate(row.rates[selectedCurrencies[1]])}</td></tr>`;
+            return `<tr>` + 
+            `<td>${dayjs(row.date).format('DD–MM–YYYY')}</td>` + 
+            `<td class="num">${formatRate(row.rates[selectedCurrencies[0]] * baseValue)}</td>` + 
+            `<td class="num">${formatRate(row.rates[selectedCurrencies[1]] * baseValue)}</td></tr>`;
         }).join('');
         const tableHTML = preTableHeader + '<table><thead>' + tHeadMarkup + '</thead><tbody>' + tBodyMarkup + '</tbody></table>';
         modalBody.innerHTML = tableHTML;
@@ -139,37 +140,28 @@
     // Set up: 
     // Only apply our JS-based enhancements if we successfully fetch data for ALL days. 
     // We can adopt this progressive enhancement based approach because we already have a non-JS-reliant baseline.
-    // Promise.all() is a good fit for our needs. It rejects overall if any individual promise is rejected. 
     const setup = () => {
         // Don’t start enhancing if the server-rendered data part failed.
         if (!latestRatesTable) return;
 
-        var stubPromise = new Promise(function(resolve, reject) {
-            setTimeout(function() {
-              resolve('foo');
-            }, 100);
-          });
-        
         Promise.all([
-            //stubPromise
-            getRatesForDay(precedingDays[0])
-            // getRatesForDay(precedingDays[0]), 
-            // getRatesForDay(precedingDays[1]), 
-            // getRatesForDay(precedingDays[2]), 
-            // getRatesForDay(precedingDays[3])
+            getRatesForDay(precedingDays[0]), 
+            getRatesForDay(precedingDays[1]), 
+            getRatesForDay(precedingDays[2]), 
+            getRatesForDay(precedingDays[3])
         ])
         .then(jsonForDays => {       
             precedingDays.forEach((day, index) => {
                 dailyRates.push({
                     'date': '' + day + '', 
-                    'rates': ratesToday // stub during development | replace with 'rates': jsonForDays[index].rates
+                    'rates': jsonForDays[index].rates
                 });
             });
     
-            // Add (to start of array) today’s rates, which were already provided server-side.
+            // Add today’s rates, which were already provided server-side.
             dailyRates.unshift({'date': `${today}`, 'rates': ratesToday});
     
-            // Finally, listen for events
+            // Everything went well so we can listen for events.
             document.addEventListener('submit', submitHandler, false);
             document.addEventListener('click', clickHandler, false);
         })
