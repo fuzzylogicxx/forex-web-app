@@ -1,9 +1,9 @@
 <div class="container">
 
-  <%= form_with model: @rate, method: :get, local: true, class: "form-custom" do |f| %>
+  <%= form_with model: @rate, method: :get, local: true, class: "form-custom", id: "form-rates-base" do |f| %>
     <div class="form-group">
       <%= label_tag(:amount, "Enter a base value") %>
-      <%= number_field_tag :amount, (params[:amount] or 100) %>
+      <%= number_field_tag :amount, (params[:amount] or 100), required: true %>
     </div>
     <%= submit_tag 'Convert', name: nil %>
   <% end %>
@@ -35,11 +35,12 @@
 </div> <!-- /.container -->
 
 <script>
-// Save today’s rates to a JS object so we only need to fetch the previous days’ rates.
+// Save today’s rates to a JS object 
+// so later we need only fetch previous days’ rates.
 const ratesToday = <%= raw(@rates['rates'].to_json) %>;
 </script>
 
-<!-- Modal elements are hidden by default so no negative impact on those using assistive technology -->
+<!-- Modal is hidden by default, so no negative impact on those using assistive technology -->
 <div class="modal-overlay closed" id="modal-overlay"></div>
 <div class="modal closed" id="modal">
 <button class="close-button" id="close-button">Close</button>
@@ -49,5 +50,7 @@ const ratesToday = <%= raw(@rates['rates'].to_json) %>;
 <% else %>  
       
 <p>Sorry, we encountered a problem while trying to fetch the latest exchange rates. Please try again later.</p>
+
+</div> <!-- /.container -->
 
 <% end %>

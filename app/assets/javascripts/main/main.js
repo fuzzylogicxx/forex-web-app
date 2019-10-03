@@ -17,6 +17,11 @@
     let selectedCurrencies = [];
 
     const amountInput = document.querySelector('#amount');
+    const validate = new Bouncer('#form-rates-base', { 
+        disableSubmit: true, 
+        messages: { missingValue: { default: 'Please enter a number.' } }
+    });
+
     const latestRatesContainer = document.querySelector('#latest-rates-table-container');
     const latestRatesTable = document.querySelector('#latest-rates-table');
     const modal = document.querySelector('#modal');
@@ -32,7 +37,7 @@
     const formatRate = (value) => value.toFixed(2);
 
     
-    // Asynchronously fetch from fixer.io’s Historical Rates Endpoint
+    // Asynchronously fetch rates for a given day from fixer.io
     async function getRatesForDay(day) {
         const url = `${fixerUrl}/${day}?access_key=${fixerAccessKey}&base=${baseCurrency}&symbols=${otherCurrencies.join(',')}`;
 
@@ -81,14 +86,6 @@
         }
     };
 
-    // Clear Selected Currencies
-    const clearSelectedCurrencies = () => {
-        let selectedRows = document.querySelectorAll('.currency-selected');
-        selectedRows.forEach((selectedRow) => selectedRow.classList.remove('currency-selected'));
-        
-        selectedCurrencies = [];
-    };
-
     
     // Launch a 2-currency, 5-day Rate Comparison Tool.
     const launchComparisonTool = () => {
@@ -106,6 +103,15 @@
         modalBody.innerHTML = tableHTML;
     };
 
+
+    // Clear Selected Currencies
+    const clearSelectedCurrencies = () => {
+        let selectedRows = document.querySelectorAll('.currency-selected');
+        selectedRows.forEach((selectedRow) => selectedRow.classList.remove('currency-selected'));
+        
+        selectedCurrencies = [];
+    };
+    
  
     // Handle form submit events
     const submitHandler = (e) => {
@@ -137,7 +143,7 @@
     
     // Set up: 
     // Only apply our JS-based enhancements if we successfully fetch data for ALL days. 
-    // We can adopt this progressive enhancement based approach because we already have a decent, non-JS-reliant baseline.
+    // We can adopt this progressive enhancement based approach because we already have a non-JS-reliant baseline.
     // Promise.all() is a good fit for our needs. It rejects overall if any individual promise is rejected. 
     const setup = () => {
         // Don’t start enhancing if the server-rendered data part failed.
