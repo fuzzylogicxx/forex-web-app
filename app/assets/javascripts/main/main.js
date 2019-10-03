@@ -34,7 +34,7 @@
     const formatRate = (value) => value.toFixed(2);
 
     
-    // Asynchronously fetch rates for a given day from fixer.io
+    // Asynchronously fetch rates for a given date from fixer.io
     async function getRatesForDay(day) {
         const url = `${fixerUrl}/${day}?access_key=${fixerAccessKey}&base=${baseCurrency}&symbols=${otherCurrencies.join(',')}`;
 
@@ -49,7 +49,7 @@
     }
 
 
-    // Accept a new Euro base value and re-render the Latest Rates table
+    // Accept a new EUR base value and re-render the 'Latest Rates' table
     const updateLatestRatesTable = (newBaseValue) => {
         if (!newBaseValue || (newBaseValue.length === 0) || (newBaseValue === baseValue)) return;
         if (!latestRatesTable) return;
@@ -139,7 +139,7 @@
 
     
     // Set up: 
-    // Only apply our JS-based enhancements if we successfully fetch data for ALL days. 
+    // Let’s only apply our JS-based enhancements if we successfully fetch data for ALL days. 
     // We can adopt this progressive enhancement based approach because we already have a resilient baseline.
     const setup = () => {
         // Don’t start enhancing if the server-rendered data part failed.

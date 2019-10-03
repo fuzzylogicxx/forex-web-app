@@ -1,6 +1,3 @@
-// Define main accent colour as a Sass variable
-// (not just as a CSS custom property)
-// because we need to use it in Sass lighten and darken functions.
 $accent: hsl(8, 62%, 58%);
 
 :root {
@@ -17,7 +14,7 @@ $accent: hsl(8, 62%, 58%);
   --border-thick: var(--s-2);
   --border-radius: 4px;
   
-  // Modular Scale Typography
+  // Modular Scale Typography & Spacing
   --ratio: 1.4;
   --s-5: calc(var(--s-4) / var(--ratio));
   --s-4: calc(var(--s-3) / var(--ratio));
@@ -29,7 +26,7 @@ $accent: hsl(8, 62%, 58%);
   --s2: calc(var(--s1) * var(--ratio));--s3:calc(var(--s2) * var(--ratio));
   --s4: calc(var(--s3) * var(--ratio));--s5:calc(var(--s4) * var(--ratio));
   
-  // Max width to maintain readability
+  // Max-width for readability
   --measure: 65ch;
   
   // Font stacks

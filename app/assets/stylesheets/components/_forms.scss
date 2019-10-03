@@ -102,8 +102,7 @@
     button,
     [type="button"],
     [type="submit"],
-    [type="reset"]
-    {
+    [type="reset"] {
         background: var(--accent);
         border: 0;
         border-radius: var(--border-radius);
@@ -118,12 +117,10 @@
     button:hover,
     [type="button"]:hover,
     [type="submit"]:hover,
-    [type="reset"]:hover
-    {
+    [type="reset"]:hover {
         background: darken($accent, 10%);
         color: darken(#fff, 10%);
     }
-
 }
 
 // Errors

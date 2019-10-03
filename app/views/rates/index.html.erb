@@ -24,23 +24,23 @@
     </p>
   
     <div class="table-container" id="latest-rates-table-container">
-    <table id="latest-rates-table" class="latest-rates-table">
-      <thead>
-        <tr>
-          <th>Currency</th>
-          <th class="num">Amount</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @rates['rates'].each do |key, value| %>
-          <tr data-currency="<%= key.to_s %>">
-            <td><%=h "#{key.to_s}" %></td>
-            <td class="num"><%= '%.2f' % (value.to_f * (params[:amount] or 100).to_f) %></td>
+      <table id="latest-rates-table" class="latest-rates-table">
+        <thead>
+          <tr>
+            <th>Currency</th>
+            <th class="num">Amount</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+        </thead>
+        <tbody>
+          <% @rates['rates'].each do |key, value| %>
+            <tr data-currency="<%= key.to_s %>">
+              <td><%=h "#{key.to_s}" %></td>
+              <td class="num"><%= '%.2f' % (value.to_f * (params[:amount] or 100).to_f) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
   </div> <!-- /.stack -->
 
@@ -52,11 +52,10 @@
   const ratesToday = <%= raw(@rates['rates'].to_json) %>;
   </script>
   
-  <!-- Modal is hidden by default, so no negative impact on those using assistive technology -->
   <div class="modal-overlay closed" id="modal-overlay"></div>
   <div class="modal closed" id="modal">
-  <button class="close-button" id="close-button" type="button" aria-label="Close">✖</button>
-  <div class="modal-body stack" id="modal-body"></div>
+    <button class="close-button" id="close-button" type="button" aria-label="Close">✖</button>
+    <div class="modal-body stack" id="modal-body"></div>
   </div>
   
   <% else %>  

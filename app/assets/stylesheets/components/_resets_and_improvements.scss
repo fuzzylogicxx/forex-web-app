@@ -11,7 +11,6 @@
   box-sizing: inherit;
 }
 
-// Max-width for readability: set the default then override with specifics
 * {
   max-width: var(--measure);
 }
@@ -94,7 +93,7 @@ video {
   display: none;
 }
 
-/* for accessibility aids only */
+/* for assistive technology only */
 .a11y-only {
   border: 0;
   clip: rect(0 0 0 0);
