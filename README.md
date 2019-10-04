@@ -26,11 +26,11 @@ In order to meet the "resilience" goal, I didn’t want to opt for a JavaScript-
 
 I instead began with a basic server-side layer responsible for fetching and displaying today’s latest exchange rates, and updating the base EUR amount via a form. This provided the resilient, fault-tolerant baseline.
 
-This server-side layer also provided an opportunity for me to work with Ruby on Rails. I’d said in my interview with Doug that I hadn’t previously used Ruby but had years of experience with other server-side languages and MVC frameworks which are similar to Rails. I hope that my including this part reflects me being willing and able to pick up required new technologies quickly. (I hope also that since it is the less relevant part of the role I’m applying for, you’ll apply less scrutiny to my Rails implementation as to the front-end part!)
+This server-side layer also provided an opportunity for me to work with Ruby on Rails. I’d said in my interview with Doug that I hadn’t previously used Ruby but had years of experience with other server-side languages and MVC frameworks which are similar to Rails. I hope that my including this part reflects me being willing and able to pick up required new technologies quickly. (I hope also that since this is the less relevant part to the role I’m applying for, you’ll apply less scrutiny to my Rails implementation as to the front-end part!)
 
 I then added a JavaScript layer to act as an enhancement. If the script can successfully `fetch` exchange rates for the previous 4 days, then it intercepts and enhances the existing experience, and provides amongst other things the 5-day comparison tool. 
 
-For the front-end implementation, I could have “thrown a framework at it” (such as React) but aside from having a little less time for that due to doing the Rails layer, I also felt it wasn’t necessary. My approach is to consider each requirement on its merits, and for this task I felt a lightweight vanilla/native JavaScript solution making use of modern syntax and APIs would be sufficient and less bloated. 
+Regarding the front-end implementation: rather than defaulting to a framework-based solution, my approach is to consider each requirement on its merits. For this task I felt a lightweight vanilla/native JavaScript solution, making use of ES2015+ modern syntax and APIs would be both sufficient and less bloated. 
 
 
 
