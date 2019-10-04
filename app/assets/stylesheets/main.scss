@@ -142,6 +142,9 @@ h1 {
 // 'Latest Rates' table
 
 .latest-rates-table {
+  tr {
+    cursor: pointer;
+  }
   tr:hover, 
   .currency-selected {
     background-color: var(--lightgray);
