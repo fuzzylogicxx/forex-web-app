@@ -1,24 +1,37 @@
-# README
+# FreeAgent Front End Coding Challenge: Foreign Exchange Rates
+An interactive web interface for comparing Foreign Exchange rates. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app meets meets all of the challenge requirements which were as follows:
+- Provides a form to accept the user’s chosen base EUR value 
+- Using the ​http://fixer.io​ API, gets today’s latest exchange rates, and shows converted values in USD, EUR, JPY, GBP, AUD, CAD, CHF, CNY, SEK, and NZD.
+- Changing the base currency (EUR) amount re-calculates the exchange amounts for the listed currencies.
+- Currency rows are selectable. On selection of two rows, the app renders a table with the exchange rates of the selected currencies over the last 5 days period.
+- Uses both Ruby and JavaScript in a layered approach.
+- Uses minimal CSS with no reliance on frameworks.
 
-Things you may want to cover:
+## See it in action
+You can clone this repo then run it locally, however I also wanted to provide a hosted demo as a convenience. I chose Heroku as host having found that it is well suited for apps which combine a mix of Rails and Node.
 
-* Ruby version
+See the app at [https://hughes-forex.herokuapp.com/](https://hughes-forex.herokuapp.com/)
 
-* System dependencies
+## Goals and Approach
+stuff here
 
-* Configuration
 
-* Database creation
+## Running the app locally
 
-* Database initialization
+### Prerequisites
+Install [Node.js](https://nodejs.org/en/).
 
-* How to run the test suite
+### Getting started
+Fork this repository then `git clone` to start working locally.
 
-* Services (job queues, cache servers, search engines, etc.)
+`cd` into your project folder then `npm install` to install all package dependencies.
 
-* Deployment instructions
+To run the Node server locally: `npm run start` then access the site in your browser at [http://localhost:3000](http://localhost:3000).
 
-* ...
+
+
+## App Features
+
+## Possible Improvements
