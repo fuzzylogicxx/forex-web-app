@@ -33,6 +33,8 @@ I then added the JavaScript enhancement layer. If the script can successfully `f
 
 With regard to JavaScript: rather than defaulting to a framework-based solution, my approach is to consider each task on its merits. For this job I felt that a lightweight vanilla/native JavaScript solution, making use of ES2015+ modern APIs, was both sufficient and better performing by being less bloated. 
 
+Note: the primary JavaScript file is `app/assets/javascripts/main/main.js` while the Sass files are in `app/assets/stylesheets/`.
+
 ## Running the app locally
 
 ### Prerequisites
