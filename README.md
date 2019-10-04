@@ -20,7 +20,7 @@ In addition to meeting the requirements, I also wanted to demonstrate my general
 My goals for the app were that it should be:
 - accessible; 
 - resilient, by providing a reliable baseline experience; 
-- progressively enhanced, by layering on more and newer features for supporting contexts; and 
+- progressively enhanced, by layering on additional features for supporting contexts; and 
 - fast.
 
 In order to meet the "resilience" goal, I chose not to opt for a JavaScript-only solution since JavaScript is relatively brittle.
@@ -31,7 +31,7 @@ This server-side layer also provided an opportunity for me to work with Ruby on 
 
 I then added the JavaScript enhancement layer. If the script can successfully `fetch` exchange rates for the previous 4 days, then it intercepts and improves upon the baseline experience, avoiding the need for page reloads, providing greater interactivity and delivering the 5-day comparison tool. 
 
-With regard to JavaScript: rather than defaulting to a framework-based solution, my approach is to consider each task on its merits. For this job I felt a lightweight vanilla/native JavaScript solution, making use of ES2015+ modern syntax and APIs was both sufficient and better performing by being less bloated. 
+With regard to JavaScript: rather than defaulting to a framework-based solution, my approach is to consider each task on its merits. For this job I felt that a lightweight vanilla/native JavaScript solution, making use of ES2015+ modern APIs, was both sufficient and better performing by being less bloated. 
 
 ## Running the app locally
 
@@ -59,10 +59,10 @@ To open the application in a browser, run ` rails server`.
 - Disables Rails Asset Pipeline in favour of a custom Gulp-based build system to compile, concatenate and minify JavaScript and Sass, and optimise SVG.
 - Mobile-first, responsive approach.
 - Uses CSS custom properties for colours, type sizing and other variables.
-- Uses Flexbox and CSS Grid for layout.
+- Combines Flexbox and CSS Grid for layout.
 
 
-## Possible Improvements
+## Improvements with more time
 - Add cacheing / storage solution so as to limit API usage. 
 - Add tests for asynchronous API calls.
-- Add custom/non-create-based Rails validation for /rates form submission.
+- In Rails app, add custom (non-create-based) validation for /rates form submission.
