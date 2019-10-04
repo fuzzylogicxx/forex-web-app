@@ -27,7 +27,7 @@ In order to meet the "resilience" goal, I chose not to opt for a JavaScript-only
 
 I instead began with a basic server-side layer responsible for fetching and displaying today’s latest exchange rates, and updating the base EUR amount via a form. This provided the resilient, fault-tolerant baseline.
 
-This server-side layer also provided an opportunity for me to work with Ruby on Rails. I’d said in my interview with Doug that I hadn’t used Ruby but had years of experience with other server-side languages and MVC frameworks. I hope that my including this part demonstrates me being willing and able to pick up any new technologies quickly. (And since it is less relevant to the role I’m applying for, I hope you’ll apply less scrutiny here than to the front-end part!)
+This server-side layer also provided an opportunity for me to work with Ruby on Rails. I’d said in my interview with Doug that I hadn’t used Ruby but had years of experience with other server-side languages and MVC frameworks. I hope that my including this Rails part demonstrates me being willing and able to pick up any new technologies quickly. (And since it is less relevant to the role I’m applying for, I hope you’ll apply less scrutiny here than to the front-end part!)
 
 I then added the JavaScript enhancement layer. If the script can successfully `fetch` exchange rates for the previous 4 days, then it intercepts and improves upon the baseline experience, avoiding the need for page reloads, providing greater interactivity and delivering the 5-day comparison tool. 
 
