@@ -56,7 +56,7 @@ To open the application in a browser, run ` rails server`.
 - Handles errors. Addresses the possibility of API calls failing.
 - Uses the Fetch API and async/await to retrieve JSON from the fixer.io API server.
 - Uses modern JavaScript APIs such as Object.entries and polyfills support in older browsers.
-- Utilises [Day.JS](https://github.com/iamkun/dayjs), a lightweight solution for easier JavaScript date formatting.
+- Utilises [Day.JS](https://github.com/iamkun/dayjs) for easier JavaScript date formatting.
 - Disables Rails Asset Pipeline in favour of a custom Gulp-based build system to compile, concatenate and minify JavaScript and Sass, and optimise SVG.
 - Mobile-first, responsive approach.
 - Uses CSS custom properties for colours, type sizing and other variables.
