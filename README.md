@@ -51,7 +51,7 @@ Fork this repository then `git clone` to start working locally.
 
 `cd` into your project folder then `npm install` to install all package dependencies.
 
-To compile static assets, run `gulp` or `gulp --watch`.
+To compile static assets, run `gulp` or `gulp watch`.
 
 To open the application in a browser, run ` rails server`.
 
