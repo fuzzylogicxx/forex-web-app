@@ -3,11 +3,12 @@ An interactive web interface for comparing Foreign Exchange rates.
 
 The app meets meets all of the challenge requirements which were as follows:
 - Provide a form to accept the user’s chosen base EUR value 
-- Using the fixer.io​ API, get today’s latest exchange rates and show converted values in USD, EUR, JPY, GBP, AUD, CAD, CHF, CNY, SEK, and NZD.
-- Changing the base currency (EUR) amount re-calculates the exchange amounts for the listed currencies.
-- Currency rows are selectable. On selection of two rows, the app renders a table with the exchange rates of the selected currencies over the last 5 days period.
-- Uses both Ruby and JavaScript in a layered approach.
-- Uses minimal CSS with no reliance on frameworks.
+- Using the fixer.io​ API, get today’s latest exchange rates
+- Show converted values in USD, EUR, JPY, GBP, AUD, CAD, CHF, CNY, SEK, and NZD
+- Changing the base currency (EUR) amount re-calculates the exchange amounts for the listed currencies
+- Currency rows are selectable. On selection of two rows, the app renders a table with the exchange rates of the selected currencies over the last 5 days period
+- Use JavaScript or Ruby or both
+- Use minimal CSS with no reliance on frameworks
 
 ## See it in action
 
