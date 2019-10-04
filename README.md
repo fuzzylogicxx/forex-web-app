@@ -29,7 +29,7 @@ I instead began with a basic server-side layer responsible for fetching and disp
 
 This server-side layer also provided an opportunity for me to work with Ruby on Rails. I’d said in my interview with Doug that I hadn’t used Ruby but had years of experience with other server-side languages and MVC frameworks. I hope that my including this part demonstrates me being willing and able to pick up any new technologies quickly. (And since it is less relevant to the role I’m applying for, I hope you’ll apply less scrutiny here than to the front-end part!)
 
-I then added the JavaScript enhancement layer. If the script can successfully `fetch` exchange rates for the previous 4 days, then it intercepts and improves upon the existing experience, avoiding the need for page reloads, providing greater interactivity and delivering the 5-day comparison tool. 
+I then added the JavaScript enhancement layer. If the script can successfully `fetch` exchange rates for the previous 4 days, then it intercepts and improves upon the baseline experience, avoiding the need for page reloads, providing greater interactivity and delivering the 5-day comparison tool. 
 
 With regard to JavaScript: rather than defaulting to a framework-based solution, my approach is to consider each task on its merits. For this job I felt a lightweight vanilla/native JavaScript solution, making use of ES2015+ modern syntax and APIs was both sufficient and better performing by being less bloated. 
 
@@ -51,11 +51,18 @@ To compile static assets, run `gulp` or `gulp --watch`.
 
 To open the application in a browser, run ` rails server`.
 
-
-
 ## App Features
-
-
+- Resilient: starts with useful baseline content in the case of JavaScript being disabled or failing.
+- Handles errors. Addresses the possibility of API calls failing.
+- Uses the Fetch API and async/await to retrieve JSON from the fixer.io API server.
+- Uses modern JavaScript APIs such as Object.entries and polyfills support in older browsers.
+- Disables Rails Asset Pipeline in favour of a custom Gulp-based build system to compile, concatenate and minify JavaScript and Sass, and optimise SVG.
+- Mobile-first, responsive approach.
+- Uses CSS custom properties for colours, type sizing and other variables.
+- Uses Flexbox and CSS Grid for layout.
 
 
 ## Possible Improvements
+- Add cacheing / storage solution so as to limit API usage. 
+- Add tests for asynchronous API calls.
+- Add custom/non-create-based Rails validation for /rates form submission.
