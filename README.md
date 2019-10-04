@@ -35,7 +35,7 @@ With regard to JavaScript: rather than defaulting to a framework-based solution,
 
 Notes: 
 - the primary JavaScript file is `app/assets/javascripts/main/main.js`
-- the Sass files are in `app/assets/stylesheets/`.
+- the Sass files are in `app/assets/stylesheets/`
 
 ## Running the app locally
 
