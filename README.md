@@ -1,5 +1,7 @@
 # FreeAgent Front End Challenge: FX Rates
-An interactive web interface for comparing Foreign Exchange rates. 
+An interactive web interface for comparing Foreign Exchange rates.
+
+> Update: I thank Stu and James for their valuable thoughts and feedback. I leave this challege as-is for integrity, but a more elaborate and scale-oriented version might involve ITCSS with BEM syntax for CSS; class-based JavaScript components (maybe with Stimulus); a _webpacker_ Rails assets pipeline; and perhaps even an Atomic Design influenced pattern library. I’m exploring that alternative version at https://github.com/fuzzylogicxx/stimitcss.
 
 The app meets meets all of the challenge requirements which were as follows:
 - Provide a form to accept the user’s chosen base EUR value 
