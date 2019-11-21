@@ -1,6 +1,8 @@
 # FreeAgent Front End Challenge: FX Rates
 An interactive web interface for comparing Foreign Exchange rates.
 
+> Update 21/11/19: I have downgraded from the paid Heroku tier (which I needed to avoid sleep delays) and the paid fixer.io tier (which I needed for HTTPS access to APIs). Therefore the Heroku-hosted version of this app will likely no longer work (although could be reinstated without much trouble if the need arises).
+
 > Update: I thank Stu and James for their valuable thoughts and feedback. I leave this challege as-is for integrity, but given the additional insights I now have into FreeAgent’s stack and methodology, an alternate version might involve ITCSS with BEM syntax for CSS; class-based JavaScript components (maybe with Stimulus); a _webpacker_ Rails assets pipeline; and perhaps even an Atomic Design influenced pattern library. In my own time I’m exploring that alternate version at https://github.com/fuzzylogicxx/stimitcss. (End Update.)
 
 The app meets meets all of the challenge requirements which were as follows:
